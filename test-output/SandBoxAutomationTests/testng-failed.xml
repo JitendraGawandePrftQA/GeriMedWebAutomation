@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SandBoxAutomationTests]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="SmokeTests(failed)">
+    <classes>
+      <class name="gmd.sand.tests.LoginTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="launchApplication"/>
+          <include name="validUserLogin"/>
+          <include name="cleanUp"/>
+        </methods>
+      </class> <!-- gmd.sand.tests.LoginTest -->
+    </classes>
+  </test> <!-- SmokeTests(failed) -->
+</suite> <!-- Failed suite [SandBoxAutomationTests] -->
