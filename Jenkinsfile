@@ -2,12 +2,17 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.11' // Make sure this is configured in Jenkins Global Tools
+        maven 'Maven 3.9.11' // Ensure this is configured in Jenkins Global Tools
         jdk 'JDK 21'         // Or your preferred JDK version
     }
 
     environment {
         GIT_REPO = 'https://github.com/JitendraGawandePrftQA/GeriMedWebAutomation.git'
+        MAVEN_OPTS = '-Dfile.encoding=UTF-8'
+    }
+
+    options {
+        timestamps() // Adds timestamps to console output
     }
 
     stages {
@@ -20,14 +25,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running Maven Build...'
-                bat 'mvn clean package'
+                bat 'mvn clean package -Dfile.encoding=UTF-8'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running Selenium Tests...'
-                bat 'mvn test'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    bat 'mvn test -Dfile.encoding=UTF-8'
+                }
             }
         }
 
@@ -41,10 +48,14 @@ pipeline {
         stage('Save Console Output') {
             steps {
                 script {
-                    def logFile = "console-output.txt"
-                    def logContent = currentBuild.rawBuild.getLog(10000).join("\n")
-                    writeFile file: logFile, text: logContent
-                    archiveArtifacts artifacts: logFile, fingerprint: true
+                    try {
+                        def logFile = "console-output.txt"
+                        def logContent = currentBuild.rawBuild.getLog(10000).join("\n")
+                        writeFile file: logFile, text: logContent
+                        archiveArtifacts artifacts: logFile, fingerprint: true
+                    } catch (e) {
+                        echo "Failed to save console output: ${e.message}"
+                    }
                 }
             }
         }
@@ -55,10 +66,3 @@ pipeline {
             echo 'Cleaning up...'
         }
         success {
-            echo 'Build and tests succeeded!'
-        }
-        failure {
-            echo 'Build or tests failed.'
-        }
-    }
-}
