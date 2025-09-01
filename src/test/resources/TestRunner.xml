@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="SandBoxAutomationTests">
-<listeners>
-<listener class-name="gmd.sand.listeners.TestListener"/>
-</listeners>
+  <listeners>
+    <listener class-name="gmd.sand.listeners.TestListener"/>
+  </listeners>
   <test thread-count="5" name="SmokeTests">
     <classes>
-      <class name="gmd.sand.tests"/>
+      <class name="gmd.sand.tests.LoginTest"/>
+      <class name="gmd.sand.tests.CheckoutPageTest"/>
     </classes>
-  </test> <!-- SmokeTests -->
-</suite> <!-- SandBoxAutomationTests -->
+  </test>
+</suite>

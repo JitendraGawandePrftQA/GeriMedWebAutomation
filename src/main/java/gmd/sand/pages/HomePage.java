@@ -40,7 +40,7 @@ public class HomePage extends BaseTest {
 		CommonActions.sendKeys(passwordField, password);
 		CommonActions.click(signInButton);
 		System.out.println("User logged in with username: " + username);
-		// Thread.sleep(3000); // Wait for potential page load after login
+		Thread.sleep(5000); // Wait for potential page load after login
 		waitForPageLoad();
 	}
 
