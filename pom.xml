@@ -51,27 +51,24 @@
   </dependencies>
  
  <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.1.2</version>
-			<configuration>
-				<suiteXmlFiles>
-				<suiteXmlFile>src/test/resources/TestRunner.xml</suiteXmlFile>
-				</suiteXmlFiles>
-			</configuration>
-		</plugin>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>3.1.2</version>
+      <configuration>
+        <suiteXmlFiles>
+          <suiteXmlFile>src/test/resources/TestRunner.xml</suiteXmlFile>
+        </suiteXmlFiles>
+      </configuration>
+    </plugin>
 
-<plugin>
+    <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-jar-plugin</artifactId>
       <version>3.2.2</version>
-      <configuration>
-        <!-- Remove classifier unless you need it -->
-        <!-- <classifier>some-classifier</classifier> -->
-      </configuration>
+      <!-- No classifier needed unless you're attaching additional artifacts -->
     </plugin>
-	</plugins>
+  </plugins>
 </build>
 </project>
