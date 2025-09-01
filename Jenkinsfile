@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'Maven 3.9.11' // Make sure this is configured in Jenkins Global Tools
-        jdk 'JDK 21'        // Or your preferred JDK version
+        jdk 'JDK 21'         // Or your preferred JDK version
     }
 
     environment {
@@ -35,6 +35,17 @@ pipeline {
             steps {
                 junit '**/target/surefire-reports/*.xml'
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+            }
+        }
+
+        stage('Save Console Output') {
+            steps {
+                script {
+                    def logFile = "console-output.txt"
+                    def logContent = currentBuild.rawBuild.getLog(10000).join("\n")
+                    writeFile file: logFile, text: logContent
+                    archiveArtifacts artifacts: logFile, fingerprint: true
+                }
             }
         }
     }
