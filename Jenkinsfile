@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.11' // Ensure this is configured in Jenkins Global Tools
-        jdk 'JDK 21'         // Or your preferred JDK version
+        maven 'Maven 3.9.11'
+        jdk 'JDK 21'
     }
 
     environment {
@@ -12,7 +12,7 @@ pipeline {
     }
 
     options {
-        timestamps() // Adds timestamps to console output
+        timestamps()
     }
 
     stages {
@@ -66,3 +66,10 @@ pipeline {
             echo 'Cleaning up...'
         }
         success {
+            echo '✅ Build and tests succeeded!'
+        }
+        failure {
+            echo '❌ Build or tests failed.'
+        }
+    }
+}
