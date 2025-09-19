@@ -1,55 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-02T03:45:48 IST" name="SandBoxAutomationTests" finished-at="2025-09-02T03:46:41 IST" duration-ms="52975">
+  <suite started-at="2025-09-19T23:45:34 IST" name="Default suite" finished-at="2025-09-19T23:45:54 IST" duration-ms="19848">
     <groups>
     </groups>
-    <test started-at="2025-09-02T03:45:48 IST" name="SmokeTests" finished-at="2025-09-02T03:46:41 IST" duration-ms="52975">
-      <class name="gmd.sand.tests.LoginTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:45:48 IST" name="launchApplication" finished-at="2025-09-02T03:45:58 IST" duration-ms="9557" status="PASS">
+    <test started-at="2025-09-19T23:45:34 IST" name="Default test" finished-at="2025-09-19T23:45:54 IST" duration-ms="19848">
+      <class name="gmd.sand.tests.LoginTestWithExcelData">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:gmd.sand.tests.LoginTestWithExcelData@50378a4]" started-at="2025-09-19T23:45:34 IST" name="launchApplication" finished-at="2025-09-19T23:45:47 IST" duration-ms="13230" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="invalidUserLogin()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:45:58 IST" name="invalidUserLogin" finished-at="2025-09-02T03:46:03 IST" duration-ms="5654" status="PASS">
+        <test-method is-config="true" signature="initPages()[pri:0, instance:gmd.sand.tests.LoginTestWithExcelData@50378a4]" started-at="2025-09-19T23:45:48 IST" name="initPages" finished-at="2025-09-19T23:45:48 IST" duration-ms="27" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invalidUserLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:46:03 IST" name="tearDown" finished-at="2025-09-02T03:46:03 IST" duration-ms="281" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:46:03 IST" name="launchApplication" finished-at="2025-09-02T03:46:12 IST" duration-ms="8310" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- launchApplication -->
-        <test-method signature="validUserLogin()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:46:12 IST" name="validUserLogin" finished-at="2025-09-02T03:46:17 IST" duration-ms="5385" status="PASS">
+        </test-method> <!-- initPages -->
+        <test-method signature="validUserLogin(java.lang.String,java.lang.String)[pri:0, instance:gmd.sand.tests.LoginTestWithExcelData@50378a4]" started-at="2025-09-19T23:45:48 IST" name="validUserLogin" data-provider="loginData" finished-at="2025-09-19T23:45:54 IST" duration-ms="5478" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Jitendra]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Tester@007]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validUserLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:46:17 IST" name="tearDown" finished-at="2025-09-02T03:46:17 IST" duration-ms="198" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:gmd.sand.tests.LoginTestWithExcelData@50378a4]" started-at="2025-09-19T23:45:54 IST" name="tearDown" finished-at="2025-09-19T23:45:54 IST" duration-ms="216" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="cleanUp()[pri:0, instance:gmd.sand.tests.LoginTest@38467116]" started-at="2025-09-02T03:46:41 IST" name="cleanUp" finished-at="2025-09-02T03:46:41 IST" duration-ms="518" status="PASS">
+        <test-method is-config="true" signature="cleanUp()[pri:0, instance:gmd.sand.tests.LoginTestWithExcelData@50378a4]" started-at="2025-09-19T23:45:54 IST" name="cleanUp" finished-at="2025-09-19T23:45:54 IST" duration-ms="312" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->
-      </class> <!-- gmd.sand.tests.LoginTest -->
-      <class name="gmd.sand.tests.CheckoutPageTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:gmd.sand.tests.CheckoutPageTest@4b8d604b]" started-at="2025-09-02T03:46:17 IST" name="launchApplication" finished-at="2025-09-02T03:46:24 IST" duration-ms="6650" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- launchApplication -->
-        <test-method signature="PlaceOrder()[pri:0, instance:gmd.sand.tests.CheckoutPageTest@4b8d604b]" started-at="2025-09-02T03:46:24 IST" name="PlaceOrder" finished-at="2025-09-02T03:46:41 IST" duration-ms="16652" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- PlaceOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:gmd.sand.tests.CheckoutPageTest@4b8d604b]" started-at="2025-09-02T03:46:41 IST" name="tearDown" finished-at="2025-09-02T03:46:41 IST" duration-ms="239" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- gmd.sand.tests.CheckoutPageTest -->
-    </test> <!-- SmokeTests -->
-  </suite> <!-- SandBoxAutomationTests -->
+      </class> <!-- gmd.sand.tests.LoginTestWithExcelData -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

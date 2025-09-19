@@ -1,66 +1,45 @@
-
 package gmd.sand.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
 
 public class ExcelReader {
 
-	private Workbook workbook;
-
-	public ExcelReader(String filePath) throws IOException {
+	@DataProvider(name = "loginData")
+	public Object[][] readExcelData() throws IOException {
+		String filePath = "src/main/resources/TestUserData.xlsx";
 		FileInputStream fis = new FileInputStream(filePath);
-		this.workbook = new XSSFWorkbook(fis);
-	}
+		Workbook workbook = new XSSFWorkbook(fis);
+		Sheet sheet = workbook.getSheetAt(0);
 
-	public String getCellData(String sheetName, int rowNum, int colNum) {
-		Sheet sheet = workbook.getSheet(sheetName);
-		Row row = sheet.getRow(rowNum);
-		Cell cell = row.getCell(colNum);
-		return cellToString(cell);
-	}
+		int rowCount = sheet.getPhysicalNumberOfRows();
+		int colCount = sheet.getRow(0).getPhysicalNumberOfCells();
 
-	public List<List<String>> getSheetData(String sheetName) {
-		List<List<String>> data = new ArrayList<>();
-		Sheet sheet = workbook.getSheet(sheetName);
-		for (Row row : sheet) {
-			List<String> rowData = new ArrayList<>();
-			for (Cell cell : row) {
-				rowData.add(cellToString(cell));
+		Object[][] data = new Object[rowCount - 1][colCount];
+
+		for (int i = 1; i < rowCount; i++) {
+			Row row = sheet.getRow(i);
+			for (int j = 0; j < colCount; j++) {
+				Cell cell = row.getCell(j);
+				if (cell != null) {
+					data[i - 1][j] = cell.toString();
+				} else {
+					data[i - 1][j] = "";
+				}
 			}
-			data.add(rowData);
+		}
+		if (workbook != null) {
+			workbook.close();
+			fis.close();
+			// return data;
 		}
 		return data;
-	}
-
-	private String cellToString(Cell cell) {
-		if (cell == null)
-			return "";
-		switch (cell.getCellType()) {
-		case STRING:
-			return cell.getStringCellValue();
-		case NUMERIC:
-			return String.valueOf(cell.getNumericCellValue());
-		case BOOLEAN:
-			return String.valueOf(cell.getBooleanCellValue());
-		case FORMULA:
-			return cell.getCellFormula();
-		case BLANK:
-			return "";
-		default:
-			return "";
-		}
-	}
-
-	public void close() throws IOException {
-		workbook.close();
 	}
 }

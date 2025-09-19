@@ -3,22 +3,20 @@ package gmd.sand.tests;
 import org.testng.annotations.Test;
 
 import gmd.sand.base.BaseTest;
-import gmd.sand.pages.HomePage;
+import gmd.sand.utils.ConfigReader;
 
 public class LoginTest extends BaseTest {
 
 	@Test
 	public void validUserLogin() throws InterruptedException {
-
-		HomePage validLogin = new HomePage(driver);
-		validLogin.userLogin("jitendra", "Tester@007");
+		String username = ConfigReader.getProperty("username");
+		String password = ConfigReader.getProperty("password");
+		homePage.userLogin(username, password);
 	}
 
 	@Test
 	public void invalidUserLogin() throws InterruptedException {
-
-		HomePage validLogin = new HomePage(driver);
-		validLogin.userLogin("jitendra11", "Tester@007");
+		homePage.userLogin("jitendra11", "Tester@007");
 	}
 
 }
